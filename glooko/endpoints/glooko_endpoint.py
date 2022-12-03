@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from glooko.common import config, enums
-
+import json
 class GlookoEndpoint(ABC):  
   def __init__(self, parser, name, path, auth, glooko_host = config.GLOOKO_HOST, glooko_host_scheme = config.GLOOKO_HOST_SCHEME):
     self.parser = parser
@@ -23,7 +23,8 @@ class GlookoEndpoint(ABC):
     r = self.auth.session.get(self.url)
     if r.status_code != 200:
       self.error(r)
-    return self.parser.parse(r.content)
+    json_parsed = json.loads(r.content)
+    return self.parser.parse(json_parsed)
   
   def handle_error(self, error_code):
     if error_code == enums.ErrorCode.NO_AUTH :
