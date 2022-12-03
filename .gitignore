@@ -1,0 +1,13 @@
+.DS_Store
+
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+*.pk
+
+node_modules
+
