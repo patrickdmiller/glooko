@@ -106,10 +106,12 @@ class Glooko:
     ))
     self.data[key] = None
     
-  def endpoint_fetch(self, key):
-    if key not in self.endpoints:
-      raise Exception("no endpoint found for key", key)
-    self.data[key] = self.endpoints[key].fetch()
-    return self.data[key]
+  def endpoint_fetch(self, endpoint_key):
+    if endpoint_key not in self.endpoints:
+      raise Exception("no endpoint found for key", endpoint_key)
+    self.data[endpoint_key] = self.endpoints[endpoint_key].fetch()
+    return self.data[endpoint_key]
   
+  def close(self):
+    self.auth.session.close()
   

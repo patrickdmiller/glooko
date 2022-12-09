@@ -1,5 +1,8 @@
 import re
 from glooko.parsers.glooko_parser import GlookoParser
+
+import logging
+
 class GlookoParserID(GlookoParser):
   def parse(self, data):
     glooko_id = re.search(r'glooko_code: .*,', data)

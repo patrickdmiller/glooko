@@ -18,6 +18,7 @@ app.use(cookieParser());
 const server = require('http').Server(app);
 
 app.get('/api/v3/users/summary/histories', async (req, res)=>{
+  console.log("parameters", req.query)
   let j = await fs.readFile("views/api_histories.json", "utf-8");
   res.json(JSON.parse(j))
 })

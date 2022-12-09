@@ -16,8 +16,9 @@ class GlookoEndpointHistory(GlookoEndpoint):
       auth = auth
     )
     self.url = None
-    
-  def build_url(self,start_date=datetime.now(timezone.utc).replace(second=0, microsecond=0)-timedelta(days=1), end_date=datetime.now(timezone.utc).replace(second=0, microsecond=0)+timedelta(days=1)):
+  
+  #build utc time with default of 1 hour before now.
+  def build_url(self,start_date=datetime.now(timezone.utc).replace(second=0, microsecond=0)-timedelta(hours=1), end_date=datetime.now(timezone.utc).replace(second=0, microsecond=0)+timedelta(hours=1)):
     params = {
       'patient':self.auth.glooko_id,
       'startDate':start_date.isoformat().replace("+00:00", "Z"),

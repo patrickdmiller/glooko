@@ -1,2 +1,2 @@
-from .glooko_parser_history import GlookoParserHistory
-from .glooko_parser_id import GlookoParserID
+from .glooko_parser_endpoints import GlookoParserHistory
+from .glooko_parser_utilities import GlookoParserID
